@@ -16,7 +16,6 @@ public class StageRotator : MonoBehaviour
         _input = FindObjectOfType<PlayerInput>();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         _input.onActionTriggered += (ctx) => { if (ctx.action.name == "RotateCW") RotateCW(ctx); };
@@ -70,7 +69,6 @@ public class StageRotator : MonoBehaviour
         _isRotating = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(_isRotating)
