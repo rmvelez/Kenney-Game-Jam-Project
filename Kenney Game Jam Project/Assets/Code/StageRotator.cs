@@ -28,10 +28,9 @@ public class StageRotator : MonoBehaviour
         if(context.started && !_isRotating)
         {
             _isRotating = true;
-            _targetRotation = transform.rotation.eulerAngles.z + interval;
 
             StartCoroutine(
-                DoRotation(transform.rotation.eulerAngles.z, _targetRotation)
+                DoRotation(1)
                 );
         }
     }
@@ -41,16 +40,23 @@ public class StageRotator : MonoBehaviour
         if (context.started && !_isRotating)
         {
             _isRotating = true;
-            _targetRotation = transform.rotation.eulerAngles.z + interval;
 
             StartCoroutine(
-                DoRotation(transform.rotation.eulerAngles.z, _targetRotation)
+                DoRotation(-1)
                 );
         }
     }
 
-    private IEnumerator DoRotation(float start, float target)
+    //Rotates the object based on rotation interval and rotate time
+    // dir
+    //  1 is Clockwise
+    // -1 is CounterClockwise
+    private IEnumerator DoRotation(float dir)
     {
+        float direction = Mathf.Sign(dir) * -1;
+        float start = transform.rotation.eulerAngles.z;
+        float target = start + interval * direction;
+
         float lerpSpd = 1 / rotateTime;
         float t = 0;
 
