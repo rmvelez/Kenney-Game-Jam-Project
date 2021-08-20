@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,6 +11,8 @@ public class StageRotator : MonoBehaviour
     public float rotateTime = 0.5f;
     bool _isRotating;
     float _targetRotation;
+
+    public event Action<float> rotated;
 
     private void Awake()
     {
@@ -62,8 +65,13 @@ public class StageRotator : MonoBehaviour
         while(t < 1)
         {
             t += lerpSpd * Time.deltaTime;
+            var newAngle = Mathf.LerpAngle(start, target, t);
+            var rotation = Quaternion.Euler(0, 0, newAngle);
 
-            transform.rotation = Quaternion.Euler(0, 0, Mathf.LerpAngle(start, target, t));
+            rotated?.Invoke(Mathf.DeltaAngle(transform.rotation.eulerAngles.z, newAngle));
+
+            transform.rotation = rotation;
+
             yield return null;
         }
         _isRotating = false;
