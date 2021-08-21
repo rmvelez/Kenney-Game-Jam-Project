@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Key
+  - BouncePad
+  - GateOne
+  - GateTwo
+  - GateThree
+  - SpikeA
+  - SpikeB
   layers:
   - Default
   - TransparentFX
