@@ -11,12 +11,19 @@ public class StageRotator : MonoBehaviour
     public float rotateTime = 0.5f;
     bool _isRotating;
     float _targetRotation;
+    [Space]
+    [SerializeField] AnimationCurve _curve;
 
     public event Action<float> rotated;
 
     private void Awake()
     {
         _input = FindObjectOfType<PlayerInput>();
+
+        if(_curve.length < 2)
+        {
+            _curve = AnimationCurve.EaseInOut(0, 0, rotateTime, 1);
+        }
     }
 
     void Start()
@@ -32,7 +39,7 @@ public class StageRotator : MonoBehaviour
             _isRotating = true;
 
             StartCoroutine(
-                DoRotation(1)
+                DoRotationCurve(1)
                 );
         }
     }
@@ -44,7 +51,7 @@ public class StageRotator : MonoBehaviour
             _isRotating = true;
 
             StartCoroutine(
-                DoRotation(-1)
+                DoRotationCurve(-1)
                 );
         }
     }
@@ -74,6 +81,37 @@ public class StageRotator : MonoBehaviour
 
             yield return null;
         }
+        _isRotating = false;
+    }
+
+    //Rotates the object based only on the animation curve
+    private IEnumerator DoRotationCurve(float dir)
+    {
+        float direction = Mathf.Sign(dir) * -1;
+        float start = transform.rotation.eulerAngles.z;
+        float target = start + interval * direction;
+
+        float elapsed = 0;
+
+        while (elapsed < _curve.keys[_curve.length - 1].time)
+        {
+            float t = _curve.Evaluate(elapsed);
+
+            var newAngle = Mathf.LerpUnclamped(start, target, t);
+            var rotation = Quaternion.Euler(0, 0, newAngle);
+
+            rotated?.Invoke(Mathf.DeltaAngle(transform.rotation.eulerAngles.z, newAngle));
+
+            transform.rotation = rotation;
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        //Clamp the rotation at the target value (since it might not end on the exact right frame)
+        rotated?.Invoke(Mathf.DeltaAngle(transform.rotation.eulerAngles.z, target));
+        transform.rotation = Quaternion.Euler(0, 0, target);
+
         _isRotating = false;
     }
 
