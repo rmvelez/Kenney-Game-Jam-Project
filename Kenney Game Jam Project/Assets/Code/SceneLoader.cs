@@ -38,7 +38,7 @@ public class SceneLoader : MonoBehaviour
 
         if (current + 1 > (int)Scene.LastLevel)
         {
-            SceneManager.LoadScene((int)Scene.TitleScene);
+            SceneManager.LoadScene((int)Scene.WinScene);
             return;
         }
 
@@ -56,7 +56,7 @@ public enum Scene
 {
     TitleScene = 0,
     TestScene = 1,
-    FirstLevel = 2,
-    LastLevel = 5,
-    WinScene = 6,
+    FirstLevel = 1,
+    LastLevel = 4,
+    WinScene = 5,
 }
