@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8403626839486420704}
   - component: {fileID: 8403626839486420706}
   - component: {fileID: 8403626839486420707}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4764,7 +4764,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8403626840816272459}
   - component: {fileID: 8403626840816272458}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4849,7 +4849,7 @@ GameObject:
   - component: {fileID: 8403626840871330792}
   - component: {fileID: 8403626840871330793}
   - component: {fileID: 3024964166570405593}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4946,3 +4946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 747158d184dc9ae42871048986b8f262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hazardLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  responses: []
