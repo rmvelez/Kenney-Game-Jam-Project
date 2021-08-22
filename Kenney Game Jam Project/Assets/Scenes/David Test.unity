@@ -508,6 +508,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 470942184}
+  - {fileID: 1294705903}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1708,6 +1709,133 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1886930436}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1294705902
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1294705903}
+  - component: {fileID: 1294705904}
+  m_Layer: 0
+  m_Name: Sound Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1294705903
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294705902}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 492306326}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1294705904
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294705902}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1419843171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1807,7 +1935,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1477789231
 Transform:
   m_ObjectHideFlags: 0
@@ -2015,7 +2143,75 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 1477789236}
+    m_ColliderPaths:
+    - - X: 70000000
+        Y: 29444444
+      - X: 66666664
+        Y: 29444444
+      - X: 65000000
+        Y: 28333332
+      - X: 65000000
+        Y: 21666666
+      - X: 67777776
+        Y: 20555556
+      - X: 70000000
+        Y: 20555556
+    - - X: 70000000
+        Y: 19444444
+      - X: 66666664
+        Y: 19444444
+      - X: 65000000
+        Y: 18333334
+      - X: 65000000
+        Y: 11666666
+      - X: 67777776
+        Y: 10555556
+      - X: 70000000
+        Y: 10555556
+    - - X: 70000000
+        Y: 9444444
+      - X: 66666664
+        Y: 9444444
+      - X: 65000000
+        Y: 8333333
+      - X: 65000000
+        Y: 1666666
+      - X: 67777776
+        Y: 555555
+      - X: 70000000
+        Y: 555555
+    - - X: 90000000
+        Y: -55555552
+      - X: 89444448
+        Y: -53888888
+      - X: 81666664
+        Y: -53888888
+      - X: 80000000
+        Y: -55555552
+      - X: 79444448
+        Y: -53888888
+      - X: 71666664
+        Y: -53888888
+      - X: 70000000
+        Y: -55555552
+      - X: 69444448
+        Y: -53888888
+      - X: 61666664
+        Y: -53888888
+      - X: 60000000
+        Y: -55555552
+      - X: 59444448
+        Y: -53888888
+      - X: 51666664
+        Y: -53888888
+      - X: 50000000
+        Y: -55555552
+      - X: 50000000
+        Y: -60000000
+      - X: 90000000
+        Y: -60000000
   m_CompositePaths:
     m_Paths:
     - - {x: 7, y: 0.16099711}
@@ -2821,13 +3017,19 @@ PrefabInstance:
     - target: {fileID: 3024964166570405593, guid: 273e8dd023f9ca448b0334d4c3ab4748,
         type: 3}
       propertyPath: responses.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3024964166570405593, guid: 273e8dd023f9ca448b0334d4c3ab4748,
         type: 3}
       propertyPath: responses.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 0b177462f8c4ed141b34d3a9f3765b73,
+        type: 2}
+    - target: {fileID: 3024964166570405593, guid: 273e8dd023f9ca448b0334d4c3ab4748,
+        type: 3}
+      propertyPath: responses.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 607a154c63e36da4db0714425ab1df92,
         type: 2}
     - target: {fileID: 8403626839486420707, guid: 273e8dd023f9ca448b0334d4c3ab4748,
         type: 3}
