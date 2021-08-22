@@ -1,14 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Teleporter : MonoBehaviour
 {
     public Teleporter other;
     bool isActive = true;
 
+    public UnityEvent teleported;
+
     public void OnRecieveTeleport()
     {
+        teleported?.Invoke();
         isActive = false;
     }
 
