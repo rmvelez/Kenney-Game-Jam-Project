@@ -28,12 +28,16 @@ public class StageRotator : MonoBehaviour
 
     void Start()
     {
+        if (!_input)
+            return;
         _input.actions["RotateCW"].started += RotateCW;
         _input.actions["RotateCCW"].started += RotateCCW;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
+        if (!_input)
+            return;
         _input.actions["RotateCW"].started -= RotateCW;
         _input.actions["RotateCCW"].started -= RotateCCW;
     }

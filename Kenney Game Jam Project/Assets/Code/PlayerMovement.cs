@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -12,6 +13,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float groundSpeed = 4;
     //[SerializeField] float airSpeed = 1.5f;
 
+    public static event Action died;
+
+    public void Die()
+    {
+        died?.Invoke();
+    }
+
     float _xAxis;
 
     private void Awake()
@@ -23,13 +31,17 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        _input.actions["Movement"].performed += OnMovement;
+        if (!_input)
+            return;
+        _input.actions["Movement"].started += OnMovement;
         _input.actions["Movement"].canceled += OnMovement;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
-        _input.actions["Movement"].performed -= OnMovement;
+        if (!_input)
+            return;
+        _input.actions["Movement"].started -= OnMovement;
         _input.actions["Movement"].canceled -= OnMovement;
     }
 

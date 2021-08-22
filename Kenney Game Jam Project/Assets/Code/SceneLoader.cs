@@ -28,7 +28,8 @@ public class SceneLoader : MonoBehaviour
 
     void SubscribeEvents()
     {
-        GameState.Instance.loadNextLevel += ReloadLevel;
+        GameState.Instance.loadNextLevel += LoadNextLevel;
+        GameState.Instance.reloadLevel += ReloadLevel;
     }
 
     void LoadNextLevel()
@@ -41,13 +42,13 @@ public class SceneLoader : MonoBehaviour
             return;
         }
 
-        SceneManager.LoadScene( current + 1, LoadSceneMode.Additive );
+        SceneManager.LoadScene( current + 1 );
     }
 
     void ReloadLevel()
     {
         var current = SceneManager.GetSceneAt(0);
-        SceneManager.LoadScene(current.buildIndex);
+        SceneManager.LoadSceneAsync(current.buildIndex);
     }
 }
 

@@ -10,6 +10,7 @@ public class GameState : MonoBehaviour
 
     public event Action levelCompleted;
     public event Action loadNextLevel;
+    public event Action reloadLevel;
 
     bool levelComplete = false;
 
@@ -34,6 +35,12 @@ public class GameState : MonoBehaviour
     void SubscribeEvents()
     {
         Door.touchedPlayer += OnDoorTouched;
+        PlayerMovement.died += OnPlayerDied;
+    }
+
+    private void OnPlayerDied()
+    {
+        reloadLevel?.Invoke();
     }
 
     private void OnDoorTouched()
