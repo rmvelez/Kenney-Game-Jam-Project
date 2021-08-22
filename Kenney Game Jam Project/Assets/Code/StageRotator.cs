@@ -28,8 +28,14 @@ public class StageRotator : MonoBehaviour
 
     void Start()
     {
-        _input.onActionTriggered += (ctx) => { if (ctx.action.name == "RotateCW") RotateCW(ctx); };
-        _input.onActionTriggered += (ctx) => { if (ctx.action.name == "RotateCCW") RotateCCW(ctx); };
+        _input.actions["RotateCW"].started += RotateCW;
+        _input.actions["RotateCCW"].started += RotateCCW;
+    }
+
+    private void OnDestroy()
+    {
+        _input.actions["RotateCW"].started -= RotateCW;
+        _input.actions["RotateCCW"].started -= RotateCCW;
     }
 
     private void RotateCW(InputAction.CallbackContext context)
@@ -113,14 +119,5 @@ public class StageRotator : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, target);
 
         _isRotating = false;
-    }
-
-    void Update()
-    {
-        if(_isRotating)
-        {
-            //Apply lerp
-            
-        }
     }
 }

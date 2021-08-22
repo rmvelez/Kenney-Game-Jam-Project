@@ -18,13 +18,17 @@ public class GameState : MonoBehaviour
         if(!instance)
         {
             instance = this;
-            SubscribeEvents();
             DontDestroyOnLoad(this);
         }
         else
         {
             Destroy(this);
         }
+    }
+
+    private void Start()
+    {
+        SubscribeEvents();
     }
 
     void SubscribeEvents()
@@ -35,7 +39,7 @@ public class GameState : MonoBehaviour
     private void OnDoorTouched()
     {
         levelComplete = true;
-        Debug.Log("Player has reached the door");
-    }
 
+        loadNextLevel?.Invoke();
+    }
 }

@@ -25,10 +25,13 @@ public class PlayerMovement : MonoBehaviour
     {
         _input.actions["Movement"].performed += OnMovement;
         _input.actions["Movement"].canceled += OnMovement;
-
-
     }
 
+    private void OnDestroy()
+    {
+        _input.actions["Movement"].performed -= OnMovement;
+        _input.actions["Movement"].canceled -= OnMovement;
+    }
 
     private void OnMovement(InputAction.CallbackContext context)
     {
