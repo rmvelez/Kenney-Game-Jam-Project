@@ -10,6 +10,7 @@ public class GameState : MonoBehaviour
 
     public event Action levelCompleted;
     public event Action loadNextLevel;
+    public event Action reloadLevel;
 
     bool levelComplete = false;
 
@@ -18,7 +19,6 @@ public class GameState : MonoBehaviour
         if(!instance)
         {
             instance = this;
-            SubscribeEvents();
             DontDestroyOnLoad(this);
         }
         else
@@ -27,15 +27,26 @@ public class GameState : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        SubscribeEvents();
+    }
+
     void SubscribeEvents()
     {
         Door.touchedPlayer += OnDoorTouched;
+        PlayerMovement.died += OnPlayerDied;
+    }
+
+    private void OnPlayerDied()
+    {
+        reloadLevel?.Invoke();
     }
 
     private void OnDoorTouched()
     {
         levelComplete = true;
-        Debug.Log("Player has reached the door");
-    }
 
+        loadNextLevel?.Invoke();
+    }
 }

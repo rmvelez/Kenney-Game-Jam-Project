@@ -8,27 +8,11 @@ public class SceneLoader : MonoBehaviour
     private static SceneLoader instance;
     public static SceneLoader Instance => instance;
 
-    public Scene TitleScene
-    {
-        get { return SceneManager.GetSceneByName("TitleScene"); }
-    }
-
-    public Scene WinScene
-    {
-        get { return SceneManager.GetSceneByName("WinScene"); }
-    }
-
-    public Scene Level(int number)
-    {
-        return SceneManager.GetSceneByName($"Level{number}");
-    }
-
     private void Awake()
     {
         if (!instance)
         {
             instance = this;
-            SubscribeEvents();
             DontDestroyOnLoad(this);
         }
         else
@@ -37,13 +21,42 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        SubscribeEvents();
+    }
+
     void SubscribeEvents()
     {
         GameState.Instance.loadNextLevel += LoadNextLevel;
+        GameState.Instance.reloadLevel += ReloadLevel;
     }
 
-    private void LoadNextLevel()
+    void LoadNextLevel()
     {
-        SceneManager.LoadScene(Level(1).buildIndex, LoadSceneMode.Single);
+        int current = SceneManager.GetActiveScene().buildIndex;
+
+        if (current + 1 > (int)Scene.LastLevel)
+        {
+            SceneManager.LoadScene((int)Scene.TitleScene);
+            return;
+        }
+
+        SceneManager.LoadScene( current + 1 );
     }
+
+    void ReloadLevel()
+    {
+        var current = SceneManager.GetSceneAt(0);
+        SceneManager.LoadSceneAsync(current.buildIndex);
+    }
+}
+
+public enum Scene
+{
+    TitleScene = 0,
+    TestScene = 1,
+    FirstLevel = 2,
+    LastLevel = 5,
+    WinScene = 6,
 }
