@@ -5090,5 +5090,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hazardLayers:
     serializedVersion: 2
-    m_Bits: 0
-  responses: []
+    m_Bits: 256
+  responses:
+  - {fileID: 11400000, guid: 0b177462f8c4ed141b34d3a9f3765b73, type: 2}
+  - {fileID: 11400000, guid: 607a154c63e36da4db0714425ab1df92, type: 2}
