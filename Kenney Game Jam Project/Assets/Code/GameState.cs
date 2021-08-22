@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameState : MonoBehaviour
 {
     private static GameState instance;
-    public GameState Instance => instance;
+    public static GameState Instance => instance;
 
     public event Action levelCompleted;
     public event Action loadNextLevel;
